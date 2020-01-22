@@ -46,8 +46,7 @@ def main():
     r = rospy.Rate(10)
     for i in range(0, num_regions):
         # Robot traverses to the new region.
-        wa = WaypointApply(reg_pose[i], reg_angle[i])
-        wa.waypoint_execute()
+        WaypointApply(reg_pose[i], reg_angle[i])
         rospy.loginfo("Movo reached the region.")
 
     # r = rospy.Rate(10)

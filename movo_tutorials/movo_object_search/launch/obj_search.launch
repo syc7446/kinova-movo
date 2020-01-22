@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <node pkg="movo_object_search" type="obj_search_main.py"  name="obj_search" output="screen" >
-        <param name="num_regions" value="1"/>
+        <param name="num_regions" value="2"/>
         <param name="object_marker_id" value="[0, 1]"/>
 
         <param name="world_x_res" value="3"/>
