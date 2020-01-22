@@ -48,7 +48,7 @@ def main():
         # Robot traverses to the new region.
         wa = WaypointApply(reg_pose[i], reg_angle[i])
         wa.waypoint_execute()
-        rospy.loginfo("Movo reached near the region.")
+        rospy.loginfo("Movo reached the region.")
 
     # r = rospy.Rate(10)
     # for i in range(0, num_regions):
@@ -59,7 +59,7 @@ def main():
     #             break
     #         r.sleep()
     #     wa.waypoint_execute()
-    #     rospy.loginfo("Movo reached near the region.")
+    #     rospy.loginfo("Movo reached the region.")
 
     #     while True: # Check if the robot's position is corrected by detecting the AR tag.
     #         if wa.check_marker_detect():

@@ -41,9 +41,9 @@
                                movo/head_controller
                                joint_state_controller"/>
 
-    <!-- <include file="$(find movo_bringup)/launch/teleop/movo_teleop.launch">
+    <include file="$(find movo_bringup)/launch/teleop/movo_teleop.launch">
         <arg name="sim" value="true"/>
-    </include> -->
+    </include>
     
     <node pkg="movo_gazebo" name="sim_odometry" type="sim_odometry" output="screen"/>
     
