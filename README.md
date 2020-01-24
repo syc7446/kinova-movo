@@ -1,7 +1,7 @@
 # Contents
 1. Installation guide: [goto](#install)
 2. Navigation: [goto](#nav)
-3. Manipulation
+3. Manipulation [goto](#mani)
 
 # <a name="install"></a>Installation guide
 ## movo_v1
@@ -23,3 +23,9 @@
 ## References
 - Refer to How Tos given by Kinova: [for real robot](https://github.com/Kinovarobotics/kinova-movo/wiki/2.-How-Tos#creating-a-map-with-real-robot) and [for simulation](https://github.com/Kinovarobotics/kinova-movo/wiki/2.-How-Tos#creating-a-map-with-virtual-robot).
 - Most relevant parameters are called in `move_base.launch` located in `/movo_demos/launch/nav/`. `eband_planner_params.yaml` contains local planner-related parameters.
+
+# <a name="mani"></a>Manipulation
+## References
+- Moveit python: [here](https://github.com/mikeferguson/moveit_python)
+- Simple grasping: [here](https://github.com/mikeferguson/simple_grasping)
+- Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription)
