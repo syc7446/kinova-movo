@@ -1,7 +1,7 @@
 # Contents
-1. Installation guide: [goto](#install)
-2. Navigation: [goto](#nav)
-3. Manipulation [goto](#mani)
+1. [Installation guide](#install)
+2. [Navigation](#nav)
+3. [Manipulation](#mani)
 
 # <a name="install"></a>Installation guide
 ## movo_v1
@@ -26,6 +26,6 @@
 
 # <a name="mani"></a>Manipulation
 ## References
-- Moveit python: [here](https://github.com/mikeferguson/moveit_python)
-- Simple grasping: [here](https://github.com/mikeferguson/simple_grasping)
-- Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription)
+- Moveit python: [here](https://github.com/mikeferguson/moveit_python).
+- Simple grasping: [here](https://github.com/mikeferguson/simple_grasping).
+- Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription).
