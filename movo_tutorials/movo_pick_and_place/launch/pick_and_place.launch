@@ -33,8 +33,4 @@
     <rosparam file="$(find movo_pick_and_place)/config/$(arg play_motion_config).yaml" command="load" />
   </node>
 
-  <!-- <group if="$(arg rviz)">
-    <node name="pick_demo_rviz" pkg="rviz" type="rviz" args="-d $(find movo_pick_and_place)/config/rviz/movo_pick_and_place.rviz" />
-  </group> -->
-
 </launch>

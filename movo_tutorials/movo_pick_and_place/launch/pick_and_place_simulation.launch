@@ -26,13 +26,13 @@
         name="init_sim_bringup" output="screen"/>
         
     <!-- Bring up navigation -->
-    <node pkg="si_utils" type="timed_roslaunch"
+    <!-- <node pkg="si_utils" type="timed_roslaunch"
         args="35 movo_demos map_nav.launch sim:=true map_file:=test_zone"
-        name="mapping_bringup" output="screen"/>
+        name="mapping_bringup" output="screen"/> -->
 
     <!-- Bring up the rviz -->
-    <!-- <node pkg="si_utils" type="timed_roslaunch"
-        args="40 movo_viz view_robot.launch function:=map_nav"
-        name="viz_bringup" output="screen"/> -->
+    <node pkg="si_utils" type="timed_roslaunch"
+        args="40 movo_viz view_robot.launch"
+        name="viz_bringup" output="screen"/>
 
 </launch>
