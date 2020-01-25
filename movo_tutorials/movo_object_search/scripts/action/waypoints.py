@@ -4,12 +4,6 @@ import rospy
 import actionlib
 from geometry_msgs.msg import Twist
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-from moveit_msgs.msg import MoveItErrorCodes
-moveit_error_dict = {}
-for name in MoveItErrorCodes.__dict__.keys():
-    if not name[:1] == '_':
-        code = MoveItErrorCodes.__dict__[name]
-        moveit_error_dict[code] = name
 
 class WaypointApply(object):
     def __init__(self, position, orientation):

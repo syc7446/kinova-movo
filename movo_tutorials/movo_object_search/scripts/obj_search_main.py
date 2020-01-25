@@ -19,9 +19,7 @@ home = expanduser("~")
 def main():
     rospy.init_node('movo_obj_search_main')
 
-    num_regions = rospy.get_param('~num_regions')
     object_marker_id = rospy.get_param('~object_marker_id')
-
     world_x_res = rospy.get_param('~world_x_res')
     world_y_res = rospy.get_param('~world_y_res')
     world_z_res = rospy.get_param('~world_z_res')
@@ -32,6 +30,7 @@ def main():
 
     reg_pose = []
     reg_angle = []
+    num_regions = rospy.get_param("num_regions")
     for i in range(0, num_regions):
         reg_pose_str = "~region_%d/position" % i
         reg_angle_str = "~region_%d/orientation" % i
