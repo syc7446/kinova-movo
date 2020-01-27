@@ -35,6 +35,9 @@
 ## SLAM
 - [RTAB-Map](http://wiki.ros.org/rtabmap_ros).
 - Installation guide: [here](https://github.com/introlab/rtabmap_ros/tree/kinetic-devel).
+- How to run:
+	- In a terminal, do `roslaunch movo_demos sim_rtabmap_slam.launch`.
+	- In another terminal, do `roslaunch movo_demos rtabmap_slam.launch rtabmap_args:="--delete_db_on_start"`.
 - Useful arguments (attach after calling the launch file):
 	- `rtabmap_args:="--delete_db_on_start"`: this deletes the database saved in `~/.ros/rtabmap.db` at each start.
 
