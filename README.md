@@ -26,6 +26,13 @@
 ## Point cloud
 - Coversion between the depth image and the point cloud: [depth_image_proc](http://wiki.ros.org/depth_image_proc).
 
+## A little survey
+- Bandwidth usage per message
+	- `/movo_camera/point_cloud/points`: >300MB/MSG.
+	- `/movo_camera/sd/image_depth`: \~8MB/MSG. The compressed depth image is \~4MB/MSG.
+	- `/movo_camera/hd/image_depth_rect/compressed`: \~19MB/MSG.
+	- `/movo_camera/qhd/image_depth_rect/compressed`: \~6.1MB/MSG. The compressed color image is 1.8MB/MSG.
+
 
 # <a name="nav"></a>Navigation
 ## Mapping and localization
