@@ -1,11 +1,11 @@
 
-# Contents
+# Table of Contents
 1. [Installation guide](#install)
 2. [Perception](#percept)
 2. [Navigation](#nav)
 3. [Manipulation](#mani)
 
-# <a name="install"></a>Installation guide
+# <a name="install"></a>Installation Guide
 ## movo_v1
 - MOVO repository for the Kinova mobile manipulator. Remote PC and sim does not need movo_network or movo_robot.
 - Setup Instructions: https://github.com/Kinovarobotics/kinova-movo/wiki/Setup-Instructions
