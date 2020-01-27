@@ -22,7 +22,7 @@
 
 import rospy
 import time
-from movo_pick_and_place.msg import PickUpPoseAction, PickUpPoseGoal
+from movo_pick_place.msg import PickUpPoseAction, PickUpPoseGoal
 from geometry_msgs.msg import PoseStamped, Pose
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from play_motion_msgs.msg import PlayMotionAction, PlayMotionGoal

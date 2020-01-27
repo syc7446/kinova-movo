@@ -3,7 +3,7 @@
  	
     <!-- Bring up the platform in sim with all models, controllers, sensors estimates -->
     <node pkg="si_utils" type="timed_roslaunch"
-        args="1 movo_gazebo movo_pick_and_place.launch"
+        args="1 movo_gazebo movo_pick_place.launch"
         name="sim_bringup" output="screen"/>
     
     <!-- Bring up the joystick for control -->
@@ -31,8 +31,8 @@
         name="mapping_bringup" output="screen"/> -->
 
     <!-- Bring up the rviz -->
-    <node pkg="si_utils" type="timed_roslaunch"
+    <!-- <node pkg="si_utils" type="timed_roslaunch"
         args="40 movo_viz view_robot.launch"
-        name="viz_bringup" output="screen"/>
+        name="viz_bringup" output="screen"/> -->
 
 </launch>

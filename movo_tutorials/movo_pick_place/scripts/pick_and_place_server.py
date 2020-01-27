@@ -28,7 +28,7 @@ from moveit_commander import PlanningSceneInterface
 from moveit_msgs.msg import Grasp, PickupAction, PickupGoal, PickupResult, MoveItErrorCodes
 from moveit_msgs.msg import PlaceAction, PlaceGoal, PlaceResult, PlaceLocation
 from geometry_msgs.msg import Pose, PoseStamped, PoseArray, Vector3Stamped, Vector3, Quaternion
-from movo_pick_and_place.msg import PickUpPoseAction, PickUpPoseGoal, PickUpPoseResult, PickUpPoseFeedback
+from movo_pick_place.msg import PickUpPoseAction, PickUpPoseGoal, PickUpPoseResult, PickUpPoseFeedback
 from moveit_msgs.srv import GetPlanningScene, GetPlanningSceneRequest, GetPlanningSceneResponse
 from std_srvs.srv import Empty, EmptyRequest
 from copy import deepcopy
@@ -42,7 +42,7 @@ for name in MoveItErrorCodes.__dict__.keys():
         moveit_error_dict[code] = name
 
 
-def createPickupGoal(group="arm_torso", target="part",
+def createPickupGoal(group="right_side", target="part",
                     grasp_pose=PoseStamped(),
                     possible_grasps=[],
                     links_to_allow_contact=None):
@@ -65,7 +65,7 @@ def createPickupGoal(group="arm_torso", target="part",
 
 def createPlaceGoal(place_pose,
                     place_locations,
-                    group="arm_torso",
+                    group="right_side",
                     target="part",
                     links_to_allow_contact=None):
     """Create PlaceGoal with the provided data"""
@@ -210,10 +210,12 @@ class PickAndPlaceServer(object):
         possible_grasps = self.sg.create_grasps_from_object_pose(object_pose)
         self.pickup_ac
         goal = createPickupGoal(
-            "arm_torso", "part", object_pose, possible_grasps, self.links_to_allow_contact)
+            "right_side", "part", object_pose, possible_grasps, self.links_to_allow_contact)
 		
         rospy.loginfo("Sending goal")
-        self.pickup_ac.send_goal(goal)
+        self.pickup_ac.send_goal(goal, active_cb=self.callback_active,
+                            feedback_cb=self.callback_feedback,
+                            done_cb=self.callback_done)
         rospy.loginfo("Waiting for result")
         self.pickup_ac.wait_for_result()
         result = self.pickup_ac.get_result()
@@ -223,6 +225,15 @@ class PickAndPlaceServer(object):
             str(moveit_error_dict[result.error_code.val]))
 
         return result.error_code.val
+
+    def callback_active(self):
+        rospy.loginfo("Action server is processing the goal")
+
+    def callback_done(self, state, result):
+        rospy.loginfo("Action server is done. State: %s, result: %s" % (str(state), str(result)))
+
+    def callback_feedback(self, feedback):
+        rospy.loginfo("Feedback:%s" % str(feedback))
 
     def place_object(self, object_pose):
         rospy.loginfo("Clearing octomap")
@@ -246,7 +257,7 @@ class PickAndPlaceServer(object):
                 "Trying to place with arm and torso")
             # Try with arm and torso
             goal = createPlaceGoal(
-                object_pose, possible_placings, "arm_torso", "part", self.links_to_allow_contact)
+                object_pose, possible_placings, "right_side", "part", self.links_to_allow_contact)
             rospy.loginfo("Sending goal")
             self.place_ac.send_goal(goal)
             rospy.loginfo("Waiting for result")

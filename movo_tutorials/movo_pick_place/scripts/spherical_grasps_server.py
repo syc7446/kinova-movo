@@ -42,7 +42,7 @@ from tf import transformations
 from tf.transformations import quaternion_from_euler, euler_from_quaternion, quaternion_about_axis, unit_vector, quaternion_multiply
 
 from dynamic_reconfigure.server import Server
-from movo_pick_and_place.cfg import SphericalGraspConfig
+from movo_pick_place.cfg import SphericalGraspConfig
 
 def normalize(v):
     norm = np.linalg.norm(v)

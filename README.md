@@ -25,7 +25,8 @@
 - Most relevant parameters are called in `move_base.launch` located in `/movo_demos/launch/nav/`. `eband_planner_params.yaml` contains local planner-related parameters.
 
 # <a name="mani"></a>Manipulation
+## How to install
+- To install [moveit_grasps](https://github.com/ros-planning/moveit_grasps/tree/kinetic-devel), do `git clone -b $ROS_DISTRO-devel https://github.com/ros-planning/moveit_grasps.git` in `/movo_common/movo_third_party`.
+
 ## References
-- Moveit python: [here](https://github.com/mikeferguson/moveit_python).
-- Simple grasping: [here](https://github.com/mikeferguson/simple_grasping).
 - Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription).

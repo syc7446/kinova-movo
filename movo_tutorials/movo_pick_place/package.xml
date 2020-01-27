@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>movo_pick_and_place</name>
+  <name>movo_pick_place</name>
   <version>2.0.2</version>
   <description>Example of MOVO picking an object with an ArUco marker placed on top of a table</description>
 

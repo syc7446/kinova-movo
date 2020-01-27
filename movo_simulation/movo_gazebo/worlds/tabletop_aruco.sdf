@@ -44,8 +44,8 @@
     </include>
     <!-- Markers -->
     <include>
-      <uri>model://aruco_cube</uri>
-      <pose>1.6 0 1.2 0 0 0</pose>
+      <uri>model://aruco_visual_marker_0</uri>
+      <pose>1.8 0 0.9 0 0 0</pose>
     </include>
 
     <gui fullscreen="0">

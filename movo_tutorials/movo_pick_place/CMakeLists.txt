@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(movo_pick_and_place)
+project(movo_pick_place)
 
 find_package(catkin REQUIRED COMPONENTS
   dynamic_reconfigure
