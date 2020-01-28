@@ -24,25 +24,35 @@ class KeyboardTeleop:
         self.msg = """
             Use the keyboard to move around!
             --------------------------------
-                    W
-                A   S   D
-                    X
-                to translate
+                      U
+                      W
+                H A  S,J  D K
+                      X
+                      M
+                to translate (U,H,K,M: fast move)
                 ------------
-                                    R
+                Y       I           R
                 Q       E           
                                     F
                 to rotate       to move torso
+                (Y,I: fast rotation)
             --------------------------------
             """
 
         self.basemoves = {
-            'w':[0.5,0,0],
+            'u':[0.5,0,0],
+            'w':[0.2,0,0],
+            'h':[0,0.5,0],
             'a':[0,0.2,0],
             's':[0,0,0],
-            'x':[-0.5,0,0],
+            'j':[0,0,0],
+            'm':[-0.5,0,0],
+            'x':[-0.2,0,0],
+            'k':[0,-0.5,0],
             'd':[0,-0.2,0],
+            'y':[0,0,1.0],
             'q':[0,0,0.5],
+            'i':[0,0,-1.0],
             'e':[0,0,-0.5]
         }
 

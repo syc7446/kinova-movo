@@ -21,6 +21,9 @@
 ### Troubleshooting
 - If kinect does not work in Gazebo, make sure to set the Gazebo reference to `${prefix}_ir_frame` from the `kinect_one_sensor.urdf.xacro` file located in `/movo_common/movo_description/urdf/sensors/`.
 
+### Useful references
+- Paper describing the MOVO software, hardware and architecture: [Snoswell et al.](https://espace.library.uq.edu.au/data/UQ_4f8a4e0/pap126s1-file1.pdf?Expires=1580165124&Key-Pair-Id=APKAJKNBJ4MJBJNC6NLQ&Signature=F~tbFYRDenScPux-868miX4d86-ud~Tgsp8vQ5aK4VyIHCr0ANWdKrqM1Z2eWgOEhvRSejZnI4wZLco2s00XdEWIQ7-P3lSsq0t50LMjiq1O5Ncw9tSGD0eEKERwqMHx1wWbHpMH52E1GblQk4OwzkrewM~cQN7O2sCOO6ifVGOxgKQb9ratZU97sHZYAUA09y30tDVfY4xmwX~VIxsG~JWLvDLKGLr5WFY2FKsmbLiLlfciAX2oHJRVe-768xOMX5KbYYz0bB-Ucraiq6Uv9tizUIw-zLaB6U7iyv0dBIYCKQTmupdFf5rnNrEmLb191JKjZ0RrHRxZ71mxr1Y18w__).
+
 
 # <a name="percept"></a>Perception
 ## Point cloud
