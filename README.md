@@ -1,18 +1,26 @@
 
 # Table of Contents
 1. [Installation guide](#install)
+	1. [movo_v1](#install-movo)
+	2. [kinectic-devel](#install-kinetic)
 2. [Perception](#percept)
+	1. [Point cloud](#percept-point)
+	2. [A little survey](#percept-survey)
 2. [Navigation](#nav)
+	1. [Mapping and localization](#nav-mapping)
+	2. [SLAM](#nav-slam)
 3. [Manipulation](#mani)
+	1. [Grasping](#mani-grasp)
+	2. [Useful references](#mani-ref)
 
 # <a name="install"></a>Installation Guide
-## movo_v1
+## <a name="install-movo"></a>movo_v1
 - MOVO repository for the Kinova mobile manipulator. Remote PC and sim does not need movo_network or movo_robot.
 - Setup Instructions: https://github.com/Kinovarobotics/kinova-movo/wiki/Setup-Instructions
 - Note: voice control requires installation of pocketsphinx. eg: sudo apt-get install ros-kinetic-pocketsphinx
     voice navigation requires installation of SpeechRecognition. eg: pip install SpeechRecognition
     
-## kinect-devel
+## <a name="install-kinetic">kinectic-devel
 ### How to install
 - Follow the steps located in `movo_common/si_utils/src/si_utils/setup_movo_pc_migration`. Start from Install third parties and additionnal libraries. But do it line by line manually.
 - In the above steps, make sure you use gcc-5. When doing `cmake`, do `env CXX=g++-5 cmake` instead.
@@ -26,10 +34,10 @@
 
 
 # <a name="percept"></a>Perception
-## Point cloud
+## <a name="percept-point"></a>Point cloud
 - Coversion between the depth image and the point cloud: [depth_image_proc](http://wiki.ros.org/depth_image_proc).
 
-## A little survey
+## <a name="percept-survey"></a>A little survey
 - Bandwidth usage per message
 	- `/movo_camera/point_cloud/points`: >300MB/MSG.
 	- `/movo_camera/sd/image_depth`: \~8MB/MSG. The compressed depth image is \~4MB/MSG.
@@ -38,11 +46,11 @@
 
 
 # <a name="nav"></a>Navigation
-## Mapping and localization
+## <a name="nav-mapping"></a>Mapping and localization
 - Refer to How Tos given by Kinova: [for real robot](https://github.com/Kinovarobotics/kinova-movo/wiki/2.-How-Tos#creating-a-map-with-real-robot) and [for simulation](https://github.com/Kinovarobotics/kinova-movo/wiki/2.-How-Tos#creating-a-map-with-virtual-robot).
 - Most relevant parameters are called in `move_base.launch` located in `/movo_demos/launch/nav/`. `eband_planner_params.yaml` contains local planner-related parameters.
 
-## SLAM
+## <a name="nav-slam"></a>SLAM
 - [RTAB-Map](http://wiki.ros.org/rtabmap_ros).
 - Installation guide: [here](https://github.com/introlab/rtabmap_ros/tree/kinetic-devel).
 - How to run:
@@ -53,8 +61,8 @@
 
 
 # <a name="mani"></a>Manipulation
-## Grasping
+## <a name="mani-grasp"></a>Grasping
 - [moveit_grasps](https://github.com/ros-planning/moveit_grasps/tree/kinetic-devel).
 
-## Useful references
+## <a name="mani-ref"></a>Useful references
 - Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription).
