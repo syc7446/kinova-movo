@@ -55,14 +55,18 @@
 - Installation guide: [here](https://github.com/introlab/rtabmap_ros/tree/kinetic-devel).
 - How to run:
 	- In a terminal, do `roslaunch movo_demos sim_rtabmap_slam.launch`.
-	- In another terminal, do `roslaunch movo_demos rtabmap_slam.launch rtabmap_args:="--delete_db_on_start"`.
+	- In another terminal, do `roslaunch movo_demos rtabmap_slam.launch rtabmap_args:="--delete_db_on_start"`. Use `rtabmap_args:="--delete_db_on_start"` if you want to start over the map. Otherwise, take this out.
 - Useful arguments (attach after calling the launch file):
 	- `rtabmap_args:="--delete_db_on_start"`: this deletes the database saved in `~/.ros/rtabmap.db` at each start.
+
+### Troubleshooting
+- If you face the error when catkin making: `make[2]: *** No rule to make target '/usr/lib/x86_64-linux-gnu/libfreenect.so', needed by '/home/yoon/movo_ws/devel/lib/rtabmap_ros/pointcloud_to_depthimage'.  Stop.`, do `sudo apt-get install libfreenect-dev`.
 
 
 # <a name="mani"></a>Manipulation
 ## <a name="mani-grasp"></a>Grasping
-- [moveit_grasps](https://github.com/ros-planning/moveit_grasps/tree/kinetic-devel).
+- [simple_grasping](https://github.com/mikeferguson/simple_grasping).
+- Refer to the Gazebo tutorial provided by Fetch Robotics: [here](http://docs.fetchrobotics.com/gazebo.html).
 
 ## <a name="mani-ref"></a>Useful references
 - Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription).
