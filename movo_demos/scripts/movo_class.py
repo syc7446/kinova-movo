@@ -6,7 +6,7 @@ import rospy
 import moveit_commander
 import moveit_msgs.msg
 import geometry_msgs.msg
-import speech_recognition as sr
+# import speech_recognition as sr
 from math import pi
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
@@ -137,12 +137,19 @@ def main():
 	my_robot = Movo_movement('left_arm')	
 	#my_robot.go_to_joint_state([0,0,0,0,0,0])
 	my_robot.go_cartesian_pose(0.5, 0.3, 0.9, 0)
+	raw_input("Press Enter to continue...")
 	my_robot.go_to_joint_state([1.57, 1.4, 2.5, 1.09, 0, 0])
+	raw_input("Press Enter to continue...")
 	my_robot.go_to_joint_state([1.9, 0, 1.5, 1.09, 0, 0])
+	raw_input("Press Enter to continue...")
 	my_robot.go_to_joint_state([1.1, 0, 1.5, 1.09, 0, 0])
+	raw_input("Press Enter to continue...")
 	my_robot.go_to_joint_state([1.9, 0, 1.5, 1.09, 0, 0])
+	raw_input("Press Enter to continue...")
 	my_robot.go_to_joint_state([1.1, 0, 1.5, 1.09, 0, 0])
+	raw_input("Press Enter to continue...")
 	my_robot.go_to_joint_state([1.9, 0, 1.5, 1.09, 0, 0])
+	raw_input("Press Enter to continue...")
 	my_robot.go_to_joint_state([1.57, 1.4, 2.5, 1.09, 0, 0])
 
 if __name__== '__main__':
