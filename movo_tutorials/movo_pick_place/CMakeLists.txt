@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(movo_pick_place)
 
+# C++ 11
+add_compile_options(-std=c++11)
+
 find_package(catkin REQUIRED COMPONENTS
   dynamic_reconfigure
   actionlib

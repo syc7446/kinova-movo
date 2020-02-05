@@ -65,7 +65,10 @@
 
 # <a name="mani"></a>Manipulation
 ## <a name="mani-grasp"></a>Grasping
+- The grasping largely consists of three packages as follows.
 - [simple_grasping](https://github.com/mikeferguson/simple_grasping).
+- [moveit_python](https://github.com/mikeferguson/moveit_python).
+- [grasping_msgs](https://github.com/mikeferguson/grasping_msgs).
 - Refer to the Gazebo tutorial provided by Fetch Robotics: [here](http://docs.fetchrobotics.com/gazebo.html).
 
 ## <a name="mani-ref"></a>Useful references
