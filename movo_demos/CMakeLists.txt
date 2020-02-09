@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS roslaunch)
 
 ## Declare a catkin package
 catkin_package()
+catkin_python_setup()
 
 roslaunch_add_file_check(launch)
 
