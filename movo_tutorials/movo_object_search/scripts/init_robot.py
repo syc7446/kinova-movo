@@ -21,7 +21,8 @@ from trajectory_msgs.msg import (
 from sensor_msgs.msg import JointState
 
 from control_msgs.msg import JointTrajectoryControllerState
-
+from movo_gazebo.action_set import HeadJTAS
+from movo_gazebo.action_set import TorsoJTAS
 
 class HeadJTASTest(object):
     def __init__(self):
@@ -288,29 +289,34 @@ def main():
     # Head motion.
     tmp_head = rospy.wait_for_message("/movo/head_controller/state", JointTrajectoryControllerState)
     current_angles_head = tmp_head.desired.positions
-    print "current head angle:", current_angles_head
-    traj_head = HeadJTASTest()
-    traj_head.add_point(list(current_angles_head), 0.0)
+    # print "current head angle:", current_angles_head
+    tmp_torso = rospy.wait_for_message("/movo/torso_controller/state", JointTrajectoryControllerState)
+    current_angles= tmp_torso.desired.positions
+    print current_angles
+    TorsoJTAS(current_angles, -0.4, 0.05, 0.0)
+    # HeadJTAS(current_angles_head, 0, +0.78, 0.3, 3.0)
+    # traj_head = HeadJTASTest()
+    # traj_head.add_point(list(current_angles_head), 0.0)
     
-    total_time_head = 0.0
-    points_head = [list(current_angles_head), 0.0]
-    for i in range(0,1):
+    # total_time_head = 0.0
+    # points_head = [list(current_angles_head), 0.0]
+    # for i in range(0,1):
         
-        pos = [current_angles_head[0]+0,current_angles_head[1]+1.57] # [left and right (+:cw, -:ccw), up and down]. 0.78 = 45 degrees, 1.57 = 90 degrees.
-        vel = 0.3
+    #     pos = [current_angles_head[0]+0,current_angles_head[1]-0.78] # [left and right (+:cw, -:ccw), up and down]. 0.78 = 45 degrees, 1.57 = 90 degrees.
+    #     vel = 0.3
         
-        dt = 0.0
-        for i in range(2):
-            tmp = abs(pos[i])/vel
-            if (tmp > dt):
-                dt = tmp
-        total_time_head+=dt
+    #     dt = 0.0
+    #     for i in range(2):
+    #         tmp = abs(pos[i])/vel
+    #         if (tmp > dt):
+    #             dt = tmp
+    #     total_time_head+=dt
    
-        traj_head.add_point(pos,total_time_head)
+    #     traj_head.add_point(pos,total_time_head)
         
-    traj_head.start()
+    # traj_head.start()
 
-    traj_head.wait(total_time_head+3.0)
+    # traj_head.wait(total_time_head+3.0)
     print("Exiting - Joint Trajectory Action Test Complete")
 
 if __name__ == "__main__":

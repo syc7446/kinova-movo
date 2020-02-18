@@ -69,6 +69,7 @@ class HeadJTAS(object):
             
         self.start()
         self.wait(total_time+wait_time)
+        rospy.loginfo("Head motion complete.")
 
     def add_point(self, positions, time):
         point = JointTrajectoryPoint()
@@ -135,6 +136,7 @@ class TorsoJTAS(object):
             
         self.start()
         self.wait(total_time+wait_time)
+        rospy.loginfo("Torso motion complete.")
 
     def add_point(self, positions, time):
         point = JointTrajectoryPoint()
@@ -151,7 +153,6 @@ class TorsoJTAS(object):
         self._client.cancel_goal()
 
     def wait(self, timeout=15.0):
-        rospy.loginfo("timeout = %f", timeout)
         self._client.wait_for_result(timeout=rospy.Duration(timeout))
 
     def result(self):
@@ -204,6 +205,7 @@ class BaseMotion(object):
         else:
             rospy.logerr("ERROR: invalid basemotion command.")
         self.motion_stop()
+        rospy.loginfo("Base motion complete.")
 
     def _motion_vel(self, vel_cmd, duration):
         """

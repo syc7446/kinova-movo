@@ -21,7 +21,9 @@ from trajectory_msgs.msg import (
 from sensor_msgs.msg import JointState
 
 from control_msgs.msg import JointTrajectoryControllerState
-
+from movo_gazebo.action_set import BaseMotion
+from movo_gazebo.action_set import HeadJTAS
+from movo_gazebo.action_set import TorsoJTAS
 
 class HeadJTASTest(object):
     def __init__(self):
@@ -285,11 +287,16 @@ class TorsoJTASTest(object):
 def main():
     rospy.init_node('movo_search_object_init')
     
-    b_test = BaseMotionTest()
-    rospy.loginfo("Start initial base motion.")
+    # BaseMotion('forward',0.5,0.3)
 
-    b_test.move_forward(1.8, 0.3)
-    b_test.motion_stop()
+    # Head motion.
+    tmp_head = rospy.wait_for_message("/movo/head_controller/state", JointTrajectoryControllerState)
+    current_angles = tmp_head.desired.positions
+    HeadJTAS(current_angles,0,-0.78,0.3,3.0)
+
+    # tmp_torso = rospy.wait_for_message("/movo/torso_controller/state", JointTrajectoryControllerState)
+    # current_torso = tmp_torso.desired.positions
+    # TorsoJTAS(current_torso,0.3,0.05,0)
 
 if __name__ == "__main__":
     main()

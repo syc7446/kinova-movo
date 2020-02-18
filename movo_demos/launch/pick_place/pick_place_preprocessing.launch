@@ -1,0 +1,12 @@
+<launch>
+  <arg name="play_motion_config"  default="approach_planner"/>
+
+  <!-- Play motion -->
+  <node pkg="play_motion" type="play_motion" name="play_motion">
+    <rosparam file="$(find movo_demos)/config/posture/$(arg play_motion_config).yaml" command="load" />
+  </node>
+
+  <rosparam command="load" file="$(find movo_demos)/config/posture/pregrasp_motion.yaml" />
+  <node name="pick_init" pkg="movo_demos" type="pick_init.py" output="screen"/>
+
+</launch>

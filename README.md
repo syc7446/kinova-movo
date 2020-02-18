@@ -71,5 +71,8 @@
 - [grasping_msgs](https://github.com/mikeferguson/grasping_msgs).
 - Refer to the Gazebo tutorial provided by Fetch Robotics: [here](http://docs.fetchrobotics.com/gazebo.html).
 
+### simple_grasping
+- Grasping poses are hardcoded in `createGraspSeries()` and `createGrasp()` in `shape_grasp_planner.cpp`.
+
 ## <a name="mani-ref"></a>Useful references
 - Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription).
