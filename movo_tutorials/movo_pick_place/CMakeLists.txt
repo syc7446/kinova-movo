@@ -11,10 +11,15 @@ find_package(catkin REQUIRED COMPONENTS
   aruco_ros
   geometry_msgs
   moveit_msgs
+  moveit_visual_tools
+  moveit_ros_planning
+  moveit_ros_planning_interface
   rospy
   std_msgs
   std_srvs
 )
+
+find_package(Eigen3 REQUIRED)
 
 generate_dynamic_reconfigure_options(
   cfg/SphericalGrasp.cfg
@@ -31,10 +36,18 @@ generate_messages(
 )
 
 catkin_package(
+  CATKIN_DEPENDS
+    moveit_core
+    moveit_visual_tools
+    moveit_ros_planning_interface
+
+  DEPENDS
+    EIGEN3
 )
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIRS}
 )
 
 install(PROGRAMS
