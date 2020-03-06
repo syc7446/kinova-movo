@@ -133,7 +133,7 @@ ShapeGraspPlanner::ShapeGraspPlanner(ros::NodeHandle& nh)
   /*
    * Retreat is usually aligned with wrist_roll
    */
-  nh.param<std::string>("left_/retreat/frame", retreat_frame_[0], "left_ee_link");
+  nh.param<std::string>("left_gripper/retreat/frame", retreat_frame_[0], "left_ee_link");
   nh.param("left_gripper/retreat/min", retreat_min_translation_[0], 0.1);
   nh.param("left_gripper/retreat/desired", retreat_desired_translation_[0], 0.15);
 
@@ -158,7 +158,7 @@ ShapeGraspPlanner::ShapeGraspPlanner(ros::NodeHandle& nh)
   /*
    * Retreat is usually aligned with wrist_roll
    */
-  nh.param<std::string>("left_/retreat/frame", retreat_frame_[1], "right_ee_link");
+  nh.param<std::string>("right_gripper/retreat/frame", retreat_frame_[1], "right_ee_link");
   nh.param("right_gripper/retreat/min", retreat_min_translation_[1], 0.1);
   nh.param("right_gripper/retreat/desired", retreat_desired_translation_[1], 0.15);
 
@@ -192,14 +192,14 @@ int ShapeGraspPlanner::createGrasp(const geometry_msgs::PoseStamped& pose,
   grasp.pre_grasp_approach = makeGripperTranslation(approach_frame_[g],
                                                     approach_min_translation_[g],
                                                     approach_desired_translation_[g],
-													                          0.0,0.0,-1.0);
+													                          1.0,0.0,0.0); // 0.0,0.0,-1.0);
 
   // TODO Change vector?
   // TODO Change translation for object height
   grasp.post_grasp_retreat = makeGripperTranslation(retreat_frame_[g],
                                                     retreat_min_translation_[g],
                                                     retreat_desired_translation_[g],
-                                                    0.0,0.0,1.0);  // retreat is in positive z direction
+                                                    -1.0,0.0,0.0);  // 0.0,0.0,1.0); retreat is in positive z direction
 
   // initial pose
   Eigen::Affine3d p = Eigen::Translation3d(pose.pose.position.x,
