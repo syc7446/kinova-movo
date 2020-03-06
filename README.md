@@ -88,7 +88,7 @@
 Demo-related files are located in `/movo_demos`.
 ## <a name="sim_demo-pick"></a>Pick and place
 MoveIt-based demo. As a simulator only rviz is used, not Gazebo. Do the following to run the demo.
-<img style="float: right;" src="https://github.com/syc7446/kinova-movo/blob/kinetic-devel/docs/Images/pick_place_demo.png">
+<img style="float: right;" src="https://github.com/syc7446/kinova-movo/blob/kinetic-devel/docs/Images/pick_place_demo.png" width="500" height="600">
 1.  `roslaunch movo_7dof_moveit_config demo.launch`.
 2. `rosrun movo_demos sim_moveit_pick_place.py`.
 
