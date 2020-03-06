@@ -1,4 +1,5 @@
 
+
 # Table of Contents
 1. [Installation guide](#install)
 	1. [movo_v1](#install-movo)
@@ -12,18 +13,23 @@
 3. [Manipulation](#mani)
 	1. [Grasping](#mani-grasp)
 	2. [Useful references](#mani-ref)
+4. [Demo in Sim](#sim_demo)
+	1. [Pick and place](#sim_demo-pick)
+5. [Demo in Real-World](#real_demo)
+
 
 # <a name="install"></a>Installation Guide
 ## <a name="install-movo"></a>movo_v1
 - MOVO repository for the Kinova mobile manipulator. Remote PC and sim does not need movo_network or movo_robot.
 - Setup Instructions: https://github.com/Kinovarobotics/kinova-movo/wiki/Setup-Instructions
-- Note: voice control requires installation of pocketsphinx. eg: sudo apt-get install ros-kinetic-pocketsphinx
-    voice navigation requires installation of SpeechRecognition. eg: pip install SpeechRecognition
+- Note: voice control requires installation of pocketsphinx. e.g.: `sudo apt-get install ros-kinetic-pocketsphinx`.
+    Voice navigation requires installation of SpeechRecognition. e.g.: `pip install SpeechRecognition`.
     
 ## <a name="install-kinetic">kinectic-devel
 ### How to install
-- Follow the steps located in `movo_common/si_utils/src/si_utils/setup_movo_pc_migration`. Start from Install third parties and additionnal libraries. But do it line by line manually.
+- Follow the steps located in `movo_common/si_utils/src/si_utils/setup_movo_pc_migration`. Start from Install third parties and additional libraries. But do it line by line manually instead of running the `setup_movo_pc_migration` script.
 - In the above steps, make sure you use gcc-5. When doing `cmake`, do `env CXX=g++-5 cmake` instead.
+- Somehow making `AssImp` gives the gtest-related error and I wasn't able to solve it yet. However, this Package was compiled successfully and not having `AssImp` seems okay for now. 
 - For libfreenect2, follow the instruction given by Kinova: <https://github.com/Kinovarobotics/kinova-movo/wiki/1.-Setup-Instructions>.
 
 ### Troubleshooting
@@ -65,14 +71,26 @@
 
 # <a name="mani"></a>Manipulation
 ## <a name="mani-grasp"></a>Grasping
+### simple_grasping
+- Currently, this feature is not available. We only use vanilla MoveIt for now.
 - The grasping largely consists of three packages as follows.
 - [simple_grasping](https://github.com/mikeferguson/simple_grasping).
 - [moveit_python](https://github.com/mikeferguson/moveit_python).
 - [grasping_msgs](https://github.com/mikeferguson/grasping_msgs).
 - Refer to the Gazebo tutorial provided by Fetch Robotics: [here](http://docs.fetchrobotics.com/gazebo.html).
-
-### simple_grasping
 - Grasping poses are hardcoded in `createGraspSeries()` and `createGrasp()` in `shape_grasp_planner.cpp`.
 
-## <a name="mani-ref"></a>Useful references
+### <a name="mani-ref"></a>Useful references
 - Actionlib-detailed description: [here](http://wiki.ros.org/actionlib/DetailedDescription).
+
+
+# <a name="sim_demo"></a>Demo in Sim
+Demo-related files are located in `/movo_demos`.
+## <a name="sim_demo-pick"></a>Pick and place
+MoveIt-based demo. As a simulator only rviz is used, not Gazebo. Do the following to run the demo.
+<img style="float: right;" src="https://github.com/syc7446/kinova-movo/blob/kinetic-devel/docs/Images/pick_place_demo.png">
+1.  `roslaunch movo_7dof_moveit_config demo.launch`.
+2. `rosrun movo_demos sim_moveit_pick_place.py`.
+
+
+# <a name="real_demo"></a>Demo in Real-World
