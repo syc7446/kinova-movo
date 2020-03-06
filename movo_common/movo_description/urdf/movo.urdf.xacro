@@ -101,39 +101,39 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </xacro:if>
        
         <xacro:if value="$(optenv MOVO_HAS_RIGHT_ROBOTIQ_GRIPPER false)">
-            <xacro:robotiq_85_gripper prefix="right_" parent="right_ee_link" >
-                <origin xyz="-0.16 0 0" rpy="${-M_PI} ${M_PI/2} 0"/>
+            <xacro:robotiq_85_gripper prefix="right_" parent="right_wrist_3_link" >
+                <origin xyz="0 0 0" rpy="0 0 0"/>
             </xacro:robotiq_85_gripper>
         </xacro:if>
 
         <xacro:if value="$(optenv MOVO_HAS_LEFT_ROBOTIQ_GRIPPER false)">
-            <xacro:robotiq_85_gripper prefix="left_" parent="left_ee_link" >
-                    <origin xyz="-0.16 0 0" rpy="${-M_PI} ${M_PI/2} 0"/>
+            <xacro:robotiq_85_gripper prefix="left_" parent="left_wrist_3_link" >
+                <origin xyz="0 0 0" rpy="0 0 0"/>
             </xacro:robotiq_85_gripper>
         </xacro:if>
         
         <xacro:if value="$(optenv MOVO_HAS_RIGHT_KG2_GRIPPER false)">
-            <xacro:kg2_gripper prefix="right_" parent="right_ee_link" >
-                <origin xyz="-0.16 0 0" rpy="${-M_PI} ${M_PI/2} 0"/>
+            <xacro:kg2_gripper prefix="right_" parent="right_wrist_3_link" >
+                <origin xyz="0 0 0" rpy="0 0 0"/>
             </xacro:kg2_gripper>
         </xacro:if>
 
         <xacro:if value="$(optenv MOVO_HAS_LEFT_KG2_GRIPPER false)">
-            <xacro:kg2_gripper prefix="left_" parent="left_ee_link" >
-                    <origin xyz="-0.16 0 0" rpy="${-M_PI} ${M_PI/2} 0"/>
+            <xacro:kg2_gripper prefix="left_" parent="left_wrist_3_link" >
+                <origin xyz="0 0 0" rpy="0 0 0"/>
             </xacro:kg2_gripper>
         </xacro:if>
         
         
         <xacro:if value="$(optenv MOVO_HAS_RIGHT_KG3_GRIPPER false)">
-            <xacro:kg3_gripper prefix="right_" parent="right_ee_link" >
-                <origin xyz="-0.16 0 0" rpy="${-M_PI} ${M_PI/2} 0"/>
+            <xacro:kg3_gripper prefix="right_" parent="right_wrist_3_link" >
+                <origin xyz="0 0 0" rpy="0 0 0"/>
             </xacro:kg3_gripper>
         </xacro:if>
 
         <xacro:if value="$(optenv MOVO_HAS_LEFT_KG3_GRIPPER false)">
-            <xacro:kg3_gripper prefix="left_" parent="left_ee_link" >
-                    <origin xyz="-0.16 0 0" rpy="${-M_PI} ${M_PI/2} 0"/>
+            <xacro:kg3_gripper prefix="left_" parent="left_wrist_3_link" >
+                <origin xyz="0 0 0" rpy="0 0 0"/>
             </xacro:kg3_gripper>
         </xacro:if>        
     

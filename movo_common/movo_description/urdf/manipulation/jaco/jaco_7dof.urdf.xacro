@@ -356,7 +356,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <joint name="${prefix}ee_fixed_joint" type="fixed">
             <parent link="${prefix}wrist_3_link" />
             <child link="${prefix}ee_link" />
-            <origin xyz="0 0 -0.1600" rpy="${M_PI} ${M_PI/2} 0"/>
+            <origin xyz="0 0 -0.1600" rpy="0 ${M_PI} 0"/>
         </joint>
 
         <link name="${prefix}ee_link"/>  
