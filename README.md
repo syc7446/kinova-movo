@@ -58,7 +58,7 @@
 
 ## <a name="nav-slam"></a>SLAM
 - [RTAB-Map](http://wiki.ros.org/rtabmap_ros).
-- Installation guide: [here](https://github.com/introlab/rtabmap_ros/tree/kinetic-devel).
+- Installation guide: [here](https://github.com/introlab/rtabmap_ros/tree/kinetic-devel). You can follow the `Build from source` and make sure you do the following when cloning rtabmap: `git clone -b kinetic-devel https://github.com/introlab/rtabmap.git rtabmap`.
 - How to run:
 	- In a terminal, do `roslaunch movo_demos sim_rtabmap_slam.launch`.
 	- In another terminal, do `roslaunch movo_demos rtabmap_slam.launch rtabmap_args:="--delete_db_on_start"`. Use `rtabmap_args:="--delete_db_on_start"` if you want to start over the map. Otherwise, take this out.
