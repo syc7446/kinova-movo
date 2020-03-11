@@ -6,7 +6,6 @@
     <arg name="ref_frame"       default="base_link"/>  <!-- leave empty and the pose will be published wrt param parent_name -->
     <arg name="corner_refinement" default="LINES" /> <!-- NONE, HARRIS, LINES, SUBPIX -->
 
-
     <node pkg="aruco_ros" type="single" name="aruco_single">
         <remap from="/camera_info" to="/movo_camera/color/camera_info" />
         <remap from="/image" to="/movo_camera/color/image_color_rect" />
@@ -14,7 +13,7 @@
         <param name="marker_size"        value="$(arg markerSize)"/>
         <param name="marker_id"          value="$(arg markerId)"/>
         <param name="reference_frame"    value="$(arg ref_frame)"/>   <!-- frame in which the marker pose will be refered -->
-        <param name="camera_frame"       value="movo_camera_color_frame"/>
+        <param name="camera_frame"       value="movo_camera_color_optical_frame"/>
         <param name="marker_frame"       value="$(arg marker_frame)" />
         <param name="corner_refinement"  value="$(arg corner_refinement)" />
     </node>
