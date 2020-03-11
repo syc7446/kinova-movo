@@ -68,9 +68,9 @@ def all_close(goal, actual, tolerance):
   return True
 
 
-class MoveGroupInteface(object):
+class MoveGroupInterface(object):
     def __init__(self, group_name, gripper_group_name):
-        super(MoveGroupInteface, self).__init__()
+        super(MoveGroupInterface, self).__init__()
 
         moveit_commander.roscpp_initialize(sys.argv)
         rospy.init_node('move_group_python_interface_tutorial',

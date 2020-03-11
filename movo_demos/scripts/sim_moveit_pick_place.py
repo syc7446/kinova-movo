@@ -41,7 +41,7 @@ import moveit_commander
 import moveit_msgs.msg
 import geometry_msgs.msg
 from math import pi
-from moveit_utils.sim_planning import MoveGroupInteface
+from moveit_utils.sim_planning import MoveGroupInterface
 
 def main():
     bool_raw_input = False
@@ -56,8 +56,8 @@ def main():
         left_gripper_group_name = "left_gripper"
         target_object = "object"
 
-        right_arm = MoveGroupInteface(right_group_name, right_gripper_group_name)
-        left_arm = MoveGroupInteface(left_group_name, left_gripper_group_name)
+        right_arm = MoveGroupInterface(right_group_name, right_gripper_group_name)
+        left_arm = MoveGroupInterface(left_group_name, left_gripper_group_name)
 
         target_joint_goal = [1.1260537695066337, 1.4939862738417884, -0.07007152850941699, 1.609509339071485, 
             -0.5450575788391218, 0.13493387482783845, -0.5797459527790872]
