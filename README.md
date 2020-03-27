@@ -5,8 +5,9 @@
 	1. [movo_v1](#install-movo)
 	2. [kinectic-devel](#install-kinetic)
 2. [Perception](#percept)
-	1. [Point cloud](#percept-point)
-	2. [A little survey](#percept-survey)
+	1. [Mask RCNN](#percept-rcnn)
+	2. [Point cloud](#percept-point)
+	3. [A little survey](#percept-survey)
 2. [Navigation](#nav)
 	1. [Mapping and localization](#nav-mapping)
 	2. [SLAM](#nav-slam)
@@ -40,6 +41,13 @@
 
 
 # <a name="percept"></a>Perception
+## <a name="percept-rcnn"></a>Mask RCNN
+- The ROS package for Mask R-CNN: [mask_rcnn_ros](https://github.com/akio/mask_rcnn_ros).
+
+### Troubleshooting
+- If you get `ImportError: libcudnn.so.6: cannot open shared object file`, then see [this issue](https://github.com/Franck-Dernoncourt/NeuroNER/issues/66#issuecomment-381317496).
+- If you get `IOError: Unable to open file (Truncated file: eof = 47251456, sblock->base_addr = 0, stored_eoa = 257557808)`, then download `mask_rcnn_coco.h5` from [here](https://github.com/matterport/Mask_RCNN/releases) and place the file in `~/.ros/`.
+
 ## <a name="percept-point"></a>Point cloud
 - Coversion between the depth image and the point cloud: [depth_image_proc](http://wiki.ros.org/depth_image_proc).
 
