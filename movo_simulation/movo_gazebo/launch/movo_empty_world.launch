@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find movo_gazebo)/launch/movo.launch">
+        <arg name="limited" default="false"/>
+        <arg name="paused" default="true"/>
+        <arg name="gui" default="false"/>
+    </include>
+</launch>

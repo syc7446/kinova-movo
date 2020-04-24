@@ -57,10 +57,11 @@ class BasicGraspingPerception
 
 public:
 
-  BasicGraspingPerception(ros::NodeHandle n) : nh_(n), debug_(false), find_objects_(false)
+  BasicGraspingPerception(ros::NodeHandle n) : nh_(n), debug_(false), depth_topic_("/movo_camera/sd/points"), find_objects_(false)
   {
     // use_debug: enable/disable output of a cloud containing object points
     nh_.getParam("use_debug", debug_);
+    nh_.getParam("depth_topic", depth_topic_);
 
     // frame_id: frame to transform cloud to (should be XY horizontal)
     world_frame_ = "base_link";
@@ -90,8 +91,8 @@ public:
     range_filter_.setFilterFieldName("z");
     range_filter_.setFilterLimits(0, 2.5);
 
-    // Subscribe to head camera cloud  "/kinect2/sd/points"
-    cloud_sub_ = nh_.subscribe<sensor_msgs::PointCloud2>("/head_camera/depth_registered/points",
+    // Subscribe to head camera cloud  "/movo_camera/point_cloud/points"
+    cloud_sub_ = nh_.subscribe<sensor_msgs::PointCloud2>(depth_topic_,
                                                                      1,
                                                                      &BasicGraspingPerception::cloudCallback,
                                                                      this);
@@ -194,6 +195,7 @@ private:
   ros::NodeHandle nh_;
 
   bool debug_;
+  std::string depth_topic_;
   std::string world_frame_;
 
   bool find_objects_;

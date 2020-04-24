@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- Debug -->
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+
+  <!-- Verbose mode -->
+  <arg name="verbose" default="false" />
+  <arg unless="$(arg verbose)" name="command_args" value="" />
+  <arg     if="$(arg verbose)" name="command_args" value="--verbose" />
+
+  <arg name="rviz"  default="true"/>
+
+  <!-- marker detector -->
+  <!-- <node pkg="aruco_ros" type="marker_publisher"  name="aruco_marker_publisher"> -->
+  <!-- <node pkg="aruco_ros" type="single"  name="aruco_single">
+    <remap from="/camera_info"       to="/movo_camera/sd/camera_info" />
+    <remap from="/image"             to="/movo_camera/sd/image_color" />
+    <param name="image_is_rectified" value="True"/>
+    <param name="marker_size"        value="0.045"/>
+    <param name="marker_id"          value="582"/>
+    <param name="reference_frame"    value="base_link"/>
+    <param name="camera_frame"       value="movo_camera_ir_optical_frame"/>
+    <param name="marker_frame"       value="aruco_frame" />
+    <param name="corner_refinement"  value="SUBPIX" />
+  </node> -->
+
+  <!-- MOVO -->
+  <include file="$(find movo_pick_place)/launch/load_movo.launch"/>
+
+  <!-- Start the demo -->
+  <!-- <node name="moveit_grasps_demo" launch-prefix="$(arg launch_prefix)" pkg="moveit_grasps"
+  type="moveit_grasps_grasp_poses_visualizer_demo" output="screen" args="">
+    <param name="ee_group_name" value="right_gripper"/>
+    <param name="planning_group_name" value="right_arm"/>
+    <rosparam command="load" file="$(find movo_pick_place)/config/movo_grasp_data.yaml"/>
+    <rosparam command="load" file="$(find moveit_grasps)/config/moveit_grasps_config.yaml"/>
+  </node> -->
+  <!-- <node name="moveit_grasps_demo" launch-prefix="$(arg launch_prefix)" pkg="moveit_grasps"
+  type="moveit_grasps_grasp_filter_demo" output="screen" args="$(arg command_args)">
+    <param name="ee_group_name" value="right_gripper"/>
+    <param name="planning_group_name" value="right_arm"/>
+    <rosparam command="load" file="$(find movo_pick_place)/config/movo_grasp_data.yaml"/>
+    <rosparam command="load" file="$(find moveit_grasps)/config/moveit_grasps_config.yaml"/>
+  </node> -->
+  <node name="moveit_grasps_demo" launch-prefix="$(arg launch_prefix)" pkg="moveit_grasps"
+  type="moveit_grasps_grasp_pipeline_demo" output="screen" args="$(arg command_args)">
+    <param name="ee_group_name" value="right_gripper"/>
+    <param name="planning_group_name" value="right_arm"/>
+    <rosparam command="load" file="$(find movo_pick_place)/config/movo_grasp_data.yaml"/>
+    <rosparam command="load" file="$(find moveit_grasps)/config/moveit_grasps_config.yaml"/>
+  </node>
+
+  <!-- Planning Functionality -->
+  <!-- <arg name="planner" default="ompl" />
+  <include ns="moveit_grasps_demo" file="$(find movo_7dof_moveit_config)/launch/planning_pipeline.launch.xml">
+    <arg name="pipeline" value="$(arg planner)" />
+  </include> -->
+
+</launch>

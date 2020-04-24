@@ -32,7 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  \brief  This module contains a collection of functions for calculating
          a CRC-16.
 
- \Platform: Linux/ROS Indigo
+ \Platform: Ubuntu 16.04 LTS / ROS Kinetic
 --------------------------------------------------------------------"""
 from movo_msgs.msg import PanTiltCmd,Status
 from trajectory_smoother import TrajectorySmoother 
@@ -94,7 +94,7 @@ class MovoHeadJTAS(object):
         self._js = rospy.wait_for_message("/movo/head/joint_states",JointState)
         self.pos_targets = self._get_current_position(self._joint_names)
         self._sub = rospy.Subscriber("/movo/head/joint_states",JointState,self._update_movo_joint_states)
-        self._cmd_pub=rospy.Publisher("/movo/head/cmd",PanTiltCmd,queue_size=10)
+        self._cmd_pub=rospy.Publisher("/movo/head/teleop/cmd",PanTiltCmd,queue_size=10)
         self._server.start()
         
         self.init_success=True

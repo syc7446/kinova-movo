@@ -16,14 +16,18 @@ add_message_files(DIRECTORY msg FILES
                                 JacoStatus.msg
                                 GripperCmd.msg
                                 GripperStat.msg
+                                JacoAngularVelocityCmd6DOF.msg
+                                JacoAngularVelocityCmd7DOF.msg
                                 LinearActuatorCmd.msg
                                 JacoCartesianVelocityCmd.msg
+                                JacoStatus.msg
                                 MotionTestCmd.msg
                                 KinovaActuatorFdbk.msg
                                 PanTiltActuatorFdbk.msg
                                 PVA.msg
                                 PanTiltCmd.msg
-                                PanTiltFdbk.msg)
+                                PanTiltFdbk.msg
+                                FaceFound.msg)
 
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 catkin_package(CATKIN_DEPENDS message_runtime std_msgs geometry_msgs)

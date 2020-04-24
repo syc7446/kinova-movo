@@ -8,11 +8,11 @@
     </node>
     
     <!-- joystick USB port is attached to movo2 -->    
-    <node pkg="joy" type="joy_node" name="joy_node" if="$(optenv MOVO_JOY_IS_ATTACHED false)">
+    <!--<node pkg="joy" type="joy_node" name="joy_node" if="$(optenv MOVO_JOY_IS_ATTACHED false)">
         <param name="dev" type="string" value="$(optenv MOVO_JOY_DEV /dev/input/js0)" />
         <param name="deadzone" type="double" value="0.1" />
         <param name="autorepeat_rate" type="double" value="50" />
-    </node>
+    </node>-->
     
     <!-- Sound modules -->    
     <node pkg="sound_play" type="soundplay_node.py" name="sound_play" output="screen"/>
@@ -20,7 +20,6 @@
     
 	<!-- Time synchonization for sibot2 -->
 	<node pkg="si_utils" type="sync_chrony" 
-		args="10.66.171.2"
 		name="time_sync" output="screen"/>
 
     <!-- Platform specific robot state publisher and parameters -->

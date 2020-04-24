@@ -30,8 +30,15 @@ export RUN_FULL_SYSTEM_TELEOP=true
 
 # Joystick configurations for joystick set MOVO_JOY_IS_ATTACHED if the joystick
 # is physically attached to this PC
-export MOVO_JOY_IS_ATTACHED=false
+# If you are using the logitech controller, put MOVO_JOY_IS_LOGITECH to true and MOVO_JOY_IS_XBOX to false
+# If you want to use the XBox 360 wireless controller, put the opposite instead. 
+# You need to do a sync_robot and a reboot of the Movo for it to apply.
+
+export MOVO_JOY_IS_ATTACHED=true
 export MOVO_JOY_DEV=/dev/input/js0
+
+export MOVO_JOY_IS_XBOX=false
+export MOVO_JOY_IS_LOGITECH=true
 
 #define if movo is wearing skins
 export MOVO_HAS_BODY=true
@@ -63,6 +70,10 @@ export KINOVA_ARM_IFACE=eth0
 export MOVO_HAS_KINOVA_ARM_7DOF=true
 export MOVO_HAS_KINOVA_ARM_6DOF=false
 
+#Camera configurations
+export MOVO_HAS_KINECT_CAMERA=true
+export MOVO_HAS_REALSENSE_CAMERA=false
+
 #gripper configurations
 
 # Must set all three environment variables for on gripper
@@ -83,6 +94,8 @@ export MOVO_HAS_LEFT_KG3_GRIPPER=true
 export USE_R85_FOR_MOVEIT_CONFIG=false
 export MOVO_HAS_RIGHT_ROBOTIQ_GRIPPER=false
 export MOVO_HAS_LEFT_ROBOTIQ_GRIPPER=false
+
+export USE_MIXED_CONFIG_FOR_MOVEIT_CONFIG=false
 
 #export for kinect2 bridge
 export OCL_IGNORE_SELF_TEST=1

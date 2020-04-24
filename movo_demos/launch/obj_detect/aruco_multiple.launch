@@ -1,0 +1,26 @@
+<launch>
+
+    <arg name="marker0Id"         default="0"/>
+    <arg name="marker1Id"         default="1"/>
+    <arg name="markerSize"        default="0.10"/>    <!-- in m -->
+    <arg name="dct_normalization" default="True" />
+    <arg name="dct_filter_size"   default="2" />
+    <arg name="marker0_frame"     default="aruco_0_frame" />
+    <arg name="marker1_frame"     default="aruco_1_frame" />
+
+    <node pkg="aruco_ros" type="double" name="aruco_simple">    
+        <remap from="/camera_info" to="/movo_camera/color/camera_info" />
+        <remap from="/image" to="/movo_camera/color/image_color_rect" />
+        <param name="image_is_rectified" value="True"/>
+        <param name="marker_size" value="$(arg markerSize)"/>
+        <param name="marker_id1" value="$(arg marker0Id)"/>
+        <param name="marker_id2" value="$(arg marker1Id)"/>
+        <param name="normalizeImage" value="$(arg dct_normalization)"/>
+        <param name="dct_components_to_remove" value="$(arg dct_filter_size)"/>
+        <param name="parent_name" value="base_link"/>
+        <param name="child_name1" value="$(arg marker0_frame)" />
+        <param name="child_name2" value="$(arg marker1_frame)" />
+    </node>
+
+</launch>
+

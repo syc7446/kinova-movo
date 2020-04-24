@@ -42,7 +42,7 @@ import actionlib
 from moveit_python import *
 from moveit_python.geometry import rotate_pose_msg_by_euler_angles
 
-from grasping_msgs.msg import *
+from grasp_msgs.msg import *
 from moveit_msgs.msg import MoveItErrorCodes, PlaceLocation
 
 joint_names = ["shoulder_pan_joint", "shoulder_lift_joint", "upperarm_roll_joint",

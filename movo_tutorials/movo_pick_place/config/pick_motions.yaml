@@ -1,0 +1,19 @@
+play_motion:
+  controllers: [movo/right_arm_controller, movo/head_controller, movo/torso_controller, movo/right_gripper_controller]
+
+  motions:
+    pregrasp:
+      joints: [linear_joint, right_shoulder_pan_joint, right_shoulder_lift_joint, right_arm_half_joint, 
+      right_elbow_joint, right_wrist_spherical_1_joint, right_wrist_spherical_2_joint, right_wrist_3_joint]
+      points:
+      - positions: [0.40, 0.32, -1.26, -0.96, -0.82, -2.12, -1.46, -0.89]
+        time_from_start: 0.0
+      # - positions: [0.34, 0.20, -1.34, -0.20, 1.94, -1.57, 1.37, 0.0]
+      #   time_from_start: 2.0
+
+    pick_final_pose:
+      joints: [linear_joint, right_shoulder_pan_joint, right_shoulder_lift_joint, right_arm_half_joint, 
+      right_elbow_joint, right_wrist_spherical_1_joint, right_wrist_spherical_2_joint, right_wrist_3_joint]
+      points:  
+      - positions: [0.40, 0.32, -1.26, -0.96, -0.82, -2.12, -1.46, -0.89]
+        time_from_start: 10.0

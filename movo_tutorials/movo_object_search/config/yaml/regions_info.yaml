@@ -1,0 +1,31 @@
+num_regions: 6
+
+region_0: {
+  position: [3.0, 0.0],
+  orientation: [0.0, 0.0, 0.0, 1.0]
+}
+
+region_1: {
+  position: [1.0, 0.0],
+  orientation: [0.0, 0.0, 0.0, 1.0]
+}
+
+region_2: {
+  position: [3.0, 0.0],
+  orientation: [0.0, 0.0, 0.0, 1.0]
+}
+
+region_3: {
+  position: [1.0, 0.0],
+  orientation: [0.0, 0.0, 0.0, 1.0]
+}
+
+region_4: {
+  position: [3.0, 0.0],
+  orientation: [0.0, 0.0, 0.0, 1.0]
+}
+
+region_5: {
+  position: [1.0, 0.0],
+  orientation: [0.0, 0.0, 0.0, 1.0]
+}

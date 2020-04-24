@@ -28,11 +28,11 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
- \file   movo_teleop
+ \file   movo_teleop_full_system
 
  \brief  Teleop node for the Stanley Innovation Vector Platform
 
- \Platform: Linux/ROS Indigo
+ \Platform: Ubuntu 16.04 LTS / ROS Kinetic
 --------------------------------------------------------------------"""
 from movo.movo_teleop_full_system import MovoTeleopFullSystem
 import rospy

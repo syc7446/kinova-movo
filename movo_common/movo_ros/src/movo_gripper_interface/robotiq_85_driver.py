@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
  \brief  Driver for Robotiq 85 communication
 
- \Platform: Linux/ROS Indigo
+ \Platform: Ubuntu 16.04 LTS / ROS Kinetic
 --------------------------------------------------------------------"""
 from robotiq_85_gripper import Robotiq85Gripper
 from movo_msgs.msg import GripperCmd, GripperStat
@@ -141,7 +141,7 @@ class Robotiq85Driver:
             prefix = 'right_'
         else:
             prefix='left_'
-        js.name = ['%srobotiq_85_left_knuckle_joint'%prefix]
+        js.name = ['%sgripper_finger1_joint'%prefix]
         pos = np.clip(0.8 - ((0.8/0.085) * self._gripper.get_pos(dev)), 0., 0.8)
         js.position = [pos]
         dt = rospy.get_time() - self._prev_js_time[dev]
@@ -176,6 +176,7 @@ class Robotiq85Driver:
                 success &= self._gripper.process_act_cmd(i)
                 rospy.sleep(0.01)
                 success &= self._gripper.process_stat_cmd(i)
+
                 if not success:
                     self._gripper_err[i]+=1
                     if self._gripper_err[i]>5:
@@ -193,8 +194,6 @@ class Robotiq85Driver:
                         self._left_gripper_pub.publish(stat)
                         self._left_gripper_joint_state_pub.publish(js)
                 rospy.sleep(0.01)
-                        
-                            
             r.sleep()
 
         self._gripper.shutdown()

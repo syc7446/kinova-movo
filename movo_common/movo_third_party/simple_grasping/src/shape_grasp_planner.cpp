@@ -133,7 +133,7 @@ ShapeGraspPlanner::ShapeGraspPlanner(ros::NodeHandle& nh)
   /*
    * Retreat is usually aligned with wrist_roll
    */
-  nh.param<std::string>("left_/retreat/frame", retreat_frame_[0], "left_ee_link");
+  nh.param<std::string>("left_gripper/retreat/frame", retreat_frame_[0], "left_ee_link");
   nh.param("left_gripper/retreat/min", retreat_min_translation_[0], 0.1);
   nh.param("left_gripper/retreat/desired", retreat_desired_translation_[0], 0.15);
 
@@ -158,7 +158,7 @@ ShapeGraspPlanner::ShapeGraspPlanner(ros::NodeHandle& nh)
   /*
    * Retreat is usually aligned with wrist_roll
    */
-  nh.param<std::string>("left_/retreat/frame", retreat_frame_[1], "right_ee_link");
+  nh.param<std::string>("right_gripper/retreat/frame", retreat_frame_[1], "right_ee_link");
   nh.param("right_gripper/retreat/min", retreat_min_translation_[1], 0.1);
   nh.param("right_gripper/retreat/desired", retreat_desired_translation_[1], 0.15);
 
@@ -175,7 +175,7 @@ int ShapeGraspPlanner::createGrasp(const geometry_msgs::PoseStamped& pose,
                                    double x_offset,
                                    double z_offset,
                                    double quality,
-								   int g)
+								                   int g)
 {
   moveit_msgs::Grasp grasp;
   grasp.grasp_pose = pose;
@@ -189,15 +189,17 @@ int ShapeGraspPlanner::createGrasp(const geometry_msgs::PoseStamped& pose,
     grasp.grasp_posture = makeGraspPosture(gripper_opening,g);
   }    
    
-    
   grasp.pre_grasp_approach = makeGripperTranslation(approach_frame_[g],
                                                     approach_min_translation_[g],
                                                     approach_desired_translation_[g],
-													1.0,0.0,0.0);
+													                          1.0,0.0,0.0); // 0.0,0.0,-1.0);
+
+  // TODO Change vector?
+  // TODO Change translation for object height
   grasp.post_grasp_retreat = makeGripperTranslation(retreat_frame_[g],
                                                     retreat_min_translation_[g],
                                                     retreat_desired_translation_[g],
-                                                    0.0,0.0,1.0);  // retreat is in positive z direction
+                                                    -1.0,0.0,0.0);  // 0.0,0.0,1.0); retreat is in positive z direction
 
   // initial pose
   Eigen::Affine3d p = Eigen::Translation3d(pose.pose.position.x,
@@ -247,14 +249,15 @@ int ShapeGraspPlanner::createGraspSeries(
   double closed = std::max(width - gripper_tolerance_[g], 0.0);
   
   // Grasp horizontally along side of box
+  // TODO Change z offset so we start higher than table height (the step argument)
   for (double step = 0.0; step < (height/2.0 - finger_depth_[g]); step += 0.01)
   {
     count += createGrasp(pose, closed, 0.0, 0.0, step, 0.8 - 0.1*step, g);  // horizontal
     count += createGrasp(pose, closed, 0.1, 0.0, step, 0.7 - 0.1*step, g);  // angled
     count += createGrasp(pose, closed, 0.2, 0.0, step, 0.6 - 0.1*step, g);  // angled_more
-    count += createGrasp(pose, closed, 0.0, 0.0, -step, 0.5 - 0.1*step, g);  // horizontal
-    count += createGrasp(pose, closed, 0.1, 0.0, -step, 0.4 - 0.1*step, g);  // angled
-    count += createGrasp(pose, closed, 0.2, 0.0, -step, 0.3 - 0.1*step, g);  // angled_more
+    // count += createGrasp(pose, closed, 0.0, 0.0, -step, 0.5 - 0.1*step, g);  // horizontal
+    // count += createGrasp(pose, closed, 0.1, 0.0, -step, 0.4 - 0.1*step, g);  // angled
+    // count += createGrasp(pose, closed, 0.2, 0.0, -step, 0.3 - 0.1*step, g);  // angled_more
 
   }
 
@@ -338,12 +341,12 @@ ShapeGraspPlanner::makeGraspPosture(double pose, int g)
 {
   trajectory_msgs::JointTrajectory trajectory;
   trajectory.joint_names.push_back(left_joint_[g]);
-  //trajectory.joint_names.push_back(right_joint_[g]);
+  trajectory.joint_names.push_back(right_joint_[g]);
   trajectory_msgs::JointTrajectoryPoint point;
   point.positions.push_back(pose);
-  //point.positions.push_back(pose);
+  point.positions.push_back(pose);
   point.effort.push_back(max_effort_[g]);
-  //point.effort.push_back(max_effort_[g]);
+  point.effort.push_back(max_effort_[g]);
   point.time_from_start = ros::Duration(grasp_duration_[g]);
   trajectory.points.push_back(point);
   return trajectory;
