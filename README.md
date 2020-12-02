@@ -25,6 +25,16 @@
 - Setup Instructions: https://github.com/Kinovarobotics/kinova-movo/wiki/Setup-Instructions
 - Note: voice control requires installation of pocketsphinx. e.g.: `sudo apt-get install ros-kinetic-pocketsphinx`.
     Voice navigation requires installation of SpeechRecognition. e.g.: `pip install SpeechRecognition`.
+
+### Troubleshooting
+- Time synchronization issue between movo1 and movo2: if you get error messages regarding time synchronization, do the following: 
+	- Connect via ssh to movo1.
+	- In a terminal of movo1, enter : ntpdate 10.66.171.1 (the ip adresse should be the adress of movo2).
+- Battery-related issue: 
+	- Connect to the Ethernet port of MOVO with a remote computer. 
+	- Power on the robot and quickly do the following: 
+		- SSH into MOVO2.
+		- `rosrun movo_ros movo_faultlog_parser`. This will produce a directory called "SI_FAULTLOGS" in the `~/.ros/` directory.
     
 ## <a name="install-kinetic">kinectic-devel
 ### How to install
