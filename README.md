@@ -5,9 +5,10 @@
 	1. [movo_v1](#install-movo)
 	2. [kinectic-devel](#install-kinetic)
 2. [Perception](#percept)
-	1. [Mask RCNN](#percept-rcnn)
-	2. [Point cloud](#percept-point)
-	3. [A little survey](#percept-survey)
+	1. [Fiducial marker](#percept-tag)
+	2. [Mask RCNN](#percept-rcnn)
+	3. [Point cloud](#percept-point)
+	4. [A little survey](#percept-survey)
 2. [Navigation](#nav)
 	1. [Mapping and localization](#nav-mapping)
 	2. [SLAM](#nav-slam)
@@ -17,6 +18,7 @@
 4. [Demo in Sim](#sim_demo)
 	1. [Pick and place](#sim_demo-pick)
 5. [Demo in Real-World](#real_demo)
+6. [Other troubleshooting tips](#trouble)
 
 
 # <a name="install"></a>Installation Guide
@@ -51,6 +53,18 @@
 
 
 # <a name="percept"></a>Perception
+## <a name="percept-tag"></a>Fiducial marker
+- We have two fiducial marker systems installed. 
+	1. Aruco: [aruco_ros](https://github.com/pal-robotics/aruco_ros).
+	2. AprilTag: The `tag36h11` type is currently used and make sure the size of the tag is 9.5 by 9.5 cm square. [apriltag_ros](https://github.com/AprilRobotics/apriltag_ros).
+
+### Troubleshooting
+- When catkin-making AprilTag, you may see the error of `This workspace contains non-catkin packages in it, and catkin cannot build a non-homogeneous workspace without isolation.  Try the catkin_make_isolated command instead.` due to the non-catkin `apriltag` package installed together. Since we must stick with `catkin_make`, not `catkin build`, install the `apriltag` package first as follows:
+	1. `make`
+	2. `PREFIX=/opt/ros/kinetic sudo make install`
+	3. Then do `catkin_make` inside `movo_ws`
+
+
 ## <a name="percept-rcnn"></a>Mask R-CNN
 - The ROS package for Mask R-CNN: [mask_rcnn_ros](https://github.com/akio/mask_rcnn_ros).
 
@@ -119,3 +133,15 @@ MoveIt-based demo. As a simulator only rviz is used, not Gazebo. Do the followin
 
 
 # <a name="real_demo"></a>Demo in Real-World
+TBD
+
+# <a name="trouble"></a>Other troubleshooting tips
+## Arms not working
+Check if the light under the ethernet port on both arm bases is blinking. If not, power on MOVO and it could be one of two reasons:
+1. If you can manually move the arm, this implies one or more of fuses are blown. Check the status of the fuse using the multimeter and replace with the spare fuse.
+2. If the arm is stiff and cannot be moved manually, this may imply that the arm is stuck in a bootloader state. To fix this, ask Kinova to receive the Base Bootloader Upgrade service bulletin (and see Section 11) as well as the latest version of the firmware. During the bootloader upgrade, you may need to go through `short-circuit the 2 pins`, which can be highly risky. Make sure you triple check the right pints to short-circuit.
+If none of the above works, ask Kinova for help.
+
+
+### Fuse specs
+Two types: 028707.5PXCN (7.5 A AC 32 V DC), and 0287002.PXCN (2 A AC 32 V DC).
