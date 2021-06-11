@@ -140,6 +140,7 @@ TBD
 Check if the light under the ethernet port on both arm bases is blinking. If not, power on MOVO and it could be one of two reasons:
 1. If you can manually move the arm, this implies one or more of fuses are blown. Check the status of the fuse using the multimeter and replace with the spare fuse.
 2. If the arm is stiff and cannot be moved manually, this may imply that the arm is stuck in a bootloader state. To fix this, ask Kinova to receive the Base Bootloader Upgrade service bulletin (and see Section 11) as well as the latest version of the firmware. During the bootloader upgrade, you may need to go through `short-circuit the 2 pins`, which can be highly risky. Make sure you triple check the right pints to short-circuit.
+
 If none of the above works, ask Kinova for help.
 
 
