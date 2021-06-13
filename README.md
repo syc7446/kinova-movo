@@ -54,9 +54,9 @@
 
 # <a name="percept"></a>Perception
 ## <a name="percept-tag"></a>Fiducial marker
-- We have two fiducial marker systems installed. 
-	1. Aruco: [aruco_ros](https://github.com/pal-robotics/aruco_ros).
-	2. AprilTag: The `tag36h11` type is currently used and make sure the size of the tag is 9.5 by 9.5 cm square. [apriltag_ros](https://github.com/AprilRobotics/apriltag_ros).
+- We have two fiducial marker systems installed (AprilTag is preferred). 
+	1. AprilTag: The `tag36h11` type is currently used and it is set in `settings.yaml` along with other AprilTag-related parameters. Set the tag ID and size in `tags.yaml`, e.g. `stanalone_tags: [{id: 0, size: 0.095}]` for the tag whose size is 9.5 by 9.5 cm square. In `continuous_detection.launch`, set `camera_name=/movo_camera/color`, `camera_frame=movo_camera_color_optical_frame`, and `image_topic=image_color_rect`. [apriltag_ros](https://github.com/AprilRobotics/apriltag_ros). [AprilTag tutorials](http://wiki.ros.org/apriltag_ros/Tutorials).
+	2. Aruco: [aruco_ros](https://github.com/pal-robotics/aruco_ros).
 
 ### Troubleshooting
 - When catkin-making AprilTag, you may see the error of `This workspace contains non-catkin packages in it, and catkin cannot build a non-homogeneous workspace without isolation.  Try the catkin_make_isolated command instead.` due to the non-catkin `apriltag` package installed together. Since we must stick with `catkin_make`, not `catkin build`, install the `apriltag` package first as follows:
