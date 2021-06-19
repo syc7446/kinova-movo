@@ -55,11 +55,14 @@
 # <a name="percept"></a>Perception
 ## <a name="percept-tag"></a>Fiducial marker
 - We have two fiducial marker systems installed (AprilTag is preferred). 
-	1. AprilTag: The `tag36h11` type is currently used and it is set in `settings.yaml` along with other AprilTag-related parameters. Set the tag ID and size you want to use in `tags.yaml`, e.g. `stanalone_tags: [{id: 0, size: 0.095}]` for the tag whose size is 9.5 by 9.5 cm square. Otherwise, tags are not going to be recognized. In `continuous_detection.launch`, set `camera_name=/movo_camera/color`, `camera_frame=movo_camera_color_optical_frame`, and `image_topic=image_color_rect`. [apriltag_ros GitHub repository](https://github.com/AprilRobotics/apriltag_ros). [AprilTag tutorials](http://wiki.ros.org/apriltag_ros/Tutorials).
+	1. AprilTag: 
+	- The `tag36h11` type is currently used and it is set in `settings.yaml` along with other AprilTag-related parameters. Set the tag ID and size you want to use in `tags.yaml`, e.g. `stanalone_tags: [{id: 0, size: 0.095}]` for the tag whose size is 9.5 by 9.5 cm square. Otherwise, tags are not going to be recognized. 
+	- If you want to use a new tag of different size and ID, see [apriltag-imgs](https://github.com/AprilRobotics/apriltag-imgs). You will find the tag sizes very small. To increase the size of the tag, open a new document in Google Docs, copy and paste the tag in Google Docs, rescale the size, and save the document as a PDF file. Then, you will find the clean image of the tag of different size.
+	- In `continuous_detection.launch`, set `camera_name=/movo_camera/color`, `camera_frame=movo_camera_color_optical_frame`, and `image_topic=image_color_rect`. [apriltag_ros GitHub repository](https://github.com/AprilRobotics/apriltag_ros). [AprilTag tutorials](http://wiki.ros.org/apriltag_ros/Tutorials).
 	2. Aruco: [aruco_ros GitHub repository](https://github.com/pal-robotics/aruco_ros).
 
 ### Troubleshooting
-- When catkin-making AprilTag, you may see the error of `This workspace contains non-catkin packages in it, and catkin cannot build a non-homogeneous workspace without isolation.  Try the catkin_make_isolated command instead.` due to the non-catkin `apriltag` package installed together. Since we must stick with `catkin_make`, not `catkin build`, install the `apriltag` package first as follows:
+- When catkin-making AprilTag, you may see the error of `This workspace contains non-catkin packages in it, and catkin cannot build a non-homogeneous workspace without isolation.  Try the catkin_make_isolated command instead.` due to the non-catkin [apriltag](https://github.com/AprilRobotics/apriltag) package installed together. Since we must stick with `catkin_make`, not `catkin build`, install the `apriltag` package first as follows:
 	1. `make`
 	2. `PREFIX=/opt/ros/kinetic sudo make install`
 	3. Then do `catkin_make` inside `movo_ws`
