@@ -31,7 +31,7 @@
 ### Troubleshooting
 - Time synchronization issue between movo1 and movo2: if you get error messages regarding time synchronization, do the following: 
 	- Connect via ssh to movo1.
-	- In a terminal of movo1, enter : ntpdate 10.66.171.1 (the ip adresse should be the adress of movo2).
+	- In a terminal of movo1, enter : ntpdate 10.66.171.1 (the ip address should be the address of movo2).
 - Battery-related issue: 
 	- Connect to the Ethernet port of MOVO with a remote computer. 
 	- Power on the robot and quickly do the following: 
